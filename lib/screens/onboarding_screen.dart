@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:trateel_mobile/size_config.dart';
 import 'package:trateel_mobile/widget/my_on_boarding.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -49,17 +48,23 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   text:
                       'الحلقات القرآنية هي : اجتماع في بيت\nمن بيوت الله أو في أي مكان طاهر\n مَرْضيّ ؛ لتدارُس القرآن الكريم مدة من\n الزمن',
                 ),
-                MyOnBoarding(
-                  imageName: 'Onboarding2.png',
-                  title: 'إدارة المراجعة\nوالحفظ',
-                  text:
-                      'الحلقات القرآنية هي : اجتماع في بيت\nمن بيوت الله أو في أي مكان طاهر\n مَرْضيّ ؛ لتدارُس القرآن الكريم مدة من\n الزمن',
+                Padding(
+                  padding: EdgeInsetsDirectional.only(top: 50),
+                  child: MyOnBoarding(
+                    imageName: 'Onboarding2.png',
+                    title: 'إدارة المراجعة\nوالحفظ',
+                    text:
+                        'الحلقات القرآنية هي : اجتماع في بيت\nمن بيوت الله أو في أي مكان طاهر\n مَرْضيّ ؛ لتدارُس القرآن الكريم مدة من\n الزمن',
+                  ),
                 ),
-                MyOnBoarding(
-                  imageName: 'Onboarding3.png',
-                  title: 'التنبيهات و إصدار\nالتقارير',
-                  text:
-                      'الحلقات القرآنية هي : اجتماع في بيت\nمن بيوت الله أو في أي مكان طاهر\n مَرْضيّ ؛ لتدارُس القرآن الكريم مدة من\n الزمن',
+                Padding(
+                  padding: EdgeInsetsDirectional.only(top: 50),
+                  child: MyOnBoarding(
+                    imageName: 'Onboarding3.png',
+                    title: 'التنبيهات و إصدار\nالتقارير',
+                    text:
+                        'الحلقات القرآنية هي : اجتماع في بيت\nمن بيوت الله أو في أي مكان طاهر\n مَرْضيّ ؛ لتدارُس القرآن الكريم مدة من\n الزمن',
+                  ),
                 ),
               ],
             ),

@@ -1,41 +1,19 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:trateel_mobile/size_config.dart';
-import 'package:trateel_mobile/widget/my_text_field.dart';
 
-class TeacherForm4 extends StatefulWidget {
-  const TeacherForm4({Key? key}) : super(key: key);
+class StudentForm4 extends StatefulWidget {
+  const StudentForm4({Key? key}) : super(key: key);
 
   @override
-  _TeacherForm4State createState() => _TeacherForm4State();
+  _StudentForm4State createState() => _StudentForm4State();
 }
 
-class _TeacherForm4State extends State<TeacherForm4> {
-  late TextEditingController _emailController;
-  late TextEditingController _userNameController;
-  late TextEditingController _passwordController;
-  bool visible = true;
+class _StudentForm4State extends State<StudentForm4> {
+  String name = 'محمد محجوب';
   bool status = false;
-  bool status2 = false;
-  @override
-  void initState() {
-    super.initState();
-    _emailController = TextEditingController();
-    _userNameController = TextEditingController();
-    _passwordController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _userNameController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -61,7 +39,7 @@ class _TeacherForm4State extends State<TeacherForm4> {
                           child: IconButton(
                             onPressed: () {
                               Navigator.pushReplacementNamed(
-                                  context, '/teacher_form_3');
+                                  context, '/student_form_3');
                             },
                             icon: Icon(
                               Icons.arrow_back_ios,
@@ -78,7 +56,7 @@ class _TeacherForm4State extends State<TeacherForm4> {
                       ),
                     ),
                     Text(
-                      'استمارة المحفظ',
+                      'استمارة الطالب',
                       style: TextStyle(
                         fontSize: 34,
                         fontWeight: FontWeight.w700,
@@ -93,54 +71,67 @@ class _TeacherForm4State extends State<TeacherForm4> {
                         color: Color(0xFF030303),
                       ),
                     ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.only(top: 7),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.warning_amber_outlined,
+                            color: Color(0xFFDF678C),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.only(start: 5),
+                            child: Text(
+                              'يرجى من ولي الأمر تعبئة البيانات التالية.',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xFFDF678C),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Text(
-                      'معلومات الحساب',
+                      'تعهد ولي الأمر',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w700,
                         color: Color(0xFFC653CB),
                       ),
                     ),
-                    MyTextField(
-                      labelText: 'إسم المستخدم',
-                      outLineBorderColor: Color(0xFFC653CB),
-                      textEditingController: _userNameController,
-                    ),
-                    MyTextField(
-                      labelText: 'البريد الإلكتروني',
-                      outLineBorderColor: Color(0xFFC653CB),
-                      textEditingController: _emailController,
-                      textInputType: TextInputType.emailAddress,
-                    ),
                     Padding(
-                      padding: EdgeInsetsDirectional.only(start: 5, end: 5, top: 10),
-                      child: TextField(
-                        controller: _passwordController,
-                        obscureText: visible,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          labelText: 'كلمة المرور',
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFFC653CB),
-                              width: 2,
+                      padding: EdgeInsetsDirectional.only(
+                        top: 10,
+                        start: 5,
+                        end: 5,
+                      ),
+                      child: Card(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.only(
+                            top: 25,
+                            bottom: 25,
+                            start: 15,
+                            end: 15,
+                          ),
+                          child: Text('أنا ولي أمر الطالب $name أتعهد لإدارة مركز تحفيظ\n'
+                              'القرآن الكريم بأن يكون الطالب ملتزم بالدراسة في\n'
+                              'المركز حضوراً وحفظاً وأن يكون الطالب حسن السير\n'
+                              'والسلوك وملتزم بالأخلاق الإسلامية.',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
                             ),
                           ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFFC653CB),
-                              width: 2,
-                            ),
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                visible ? visible = false : visible = true;
-                              });
-                            },
-                            icon: Icon(visible
-                                ? Icons.visibility
-                                : Icons.visibility_off),
+                        ),
+                        color: Color(0xFFC4C4C4),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(7),
+                          side: BorderSide(
+                            width: 1,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -157,22 +148,7 @@ class _TeacherForm4State extends State<TeacherForm4> {
                           checkColor: Colors.white,
                           activeColor: Color(0xFFC653CB),
                         ),
-                        Text('أوافق على الأحكام والشروط.')
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: status2,
-                          onChanged: (value) {
-                            setState(() {
-                              status2 = value!;
-                            });
-                          },
-                          checkColor: Colors.white,
-                          activeColor: Color(0xFFC653CB),
-                        ),
-                        Text('أرغب بتلقي رسائل البريد الإلكتروني من التطبيق.')
+                        Text('قرأت كافة التفاصيل أعلاه وأتعهد أنا الطالب بكل ما جاء فيها.')
                       ],
                     ),
                     SizedBox(
@@ -188,7 +164,7 @@ class _TeacherForm4State extends State<TeacherForm4> {
               child: Container(
                 child: IconButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/done_screen');
+                    Navigator.pushReplacementNamed(context, '/student_form_5');
                   },
                   icon: Icon(
                     Icons.arrow_forward_ios,

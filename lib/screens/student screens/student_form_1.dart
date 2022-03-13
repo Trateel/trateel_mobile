@@ -2,37 +2,37 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:trateel_mobile/size_config.dart';
 import 'package:trateel_mobile/widget/my_text_field.dart';
 
-class TeacherForm4 extends StatefulWidget {
-  const TeacherForm4({Key? key}) : super(key: key);
+class StudentForm1 extends StatefulWidget {
+  const StudentForm1({Key? key}) : super(key: key);
 
   @override
-  _TeacherForm4State createState() => _TeacherForm4State();
+  _StudentForm1State createState() => _StudentForm1State();
 }
 
-class _TeacherForm4State extends State<TeacherForm4> {
-  late TextEditingController _emailController;
-  late TextEditingController _userNameController;
-  late TextEditingController _passwordController;
-  bool visible = true;
-  bool status = false;
-  bool status2 = false;
+class _StudentForm1State extends State<StudentForm1> {
+  late TextEditingController _nameController;
+  late TextEditingController _idController;
+  late TextEditingController _mobileController;
+  late TextEditingController _birthDayController;
+
   @override
   void initState() {
     super.initState();
-    _emailController = TextEditingController();
-    _userNameController = TextEditingController();
-    _passwordController = TextEditingController();
+    _nameController = TextEditingController();
+    _idController = TextEditingController();
+    _mobileController = TextEditingController();
+    _birthDayController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _emailController.dispose();
-    _userNameController.dispose();
-    _passwordController.dispose();
+    _nameController.dispose();
+    _idController.dispose();
+    _mobileController.dispose();
+    _birthDayController.dispose();
     super.dispose();
   }
 
@@ -61,7 +61,7 @@ class _TeacherForm4State extends State<TeacherForm4> {
                           child: IconButton(
                             onPressed: () {
                               Navigator.pushReplacementNamed(
-                                  context, '/teacher_form_3');
+                                  context, '/request_access_screen');
                             },
                             icon: Icon(
                               Icons.arrow_back_ios,
@@ -78,7 +78,7 @@ class _TeacherForm4State extends State<TeacherForm4> {
                       ),
                     ),
                     Text(
-                      'استمارة المحفظ',
+                      'استمارة الطالب',
                       style: TextStyle(
                         fontSize: 34,
                         fontWeight: FontWeight.w700,
@@ -94,7 +94,7 @@ class _TeacherForm4State extends State<TeacherForm4> {
                       ),
                     ),
                     Text(
-                      'معلومات الحساب',
+                      'بيانات الطالب',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w700,
@@ -102,78 +102,27 @@ class _TeacherForm4State extends State<TeacherForm4> {
                       ),
                     ),
                     MyTextField(
-                      labelText: 'إسم المستخدم',
+                      labelText: 'الاسم رباعي',
                       outLineBorderColor: Color(0xFFC653CB),
-                      textEditingController: _userNameController,
+                      textEditingController: _nameController,
                     ),
                     MyTextField(
-                      labelText: 'البريد الإلكتروني',
+                      labelText: 'الصف والشعبة',
                       outLineBorderColor: Color(0xFFC653CB),
-                      textEditingController: _emailController,
-                      textInputType: TextInputType.emailAddress,
+                      textInputType: TextInputType.number,
+                      textEditingController: _idController,
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.only(start: 5, end: 5, top: 10),
-                      child: TextField(
-                        controller: _passwordController,
-                        obscureText: visible,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          labelText: 'كلمة المرور',
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFFC653CB),
-                              width: 2,
-                            ),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFFC653CB),
-                              width: 2,
-                            ),
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                visible ? visible = false : visible = true;
-                              });
-                            },
-                            icon: Icon(visible
-                                ? Icons.visibility
-                                : Icons.visibility_off),
-                          ),
-                        ),
-                      ),
+                    MyTextField(
+                      labelText: 'عنوان السكن',
+                      outLineBorderColor: Color(0xFFC653CB),
+                      textInputType: TextInputType.number,
+                      textEditingController: _mobileController,
                     ),
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: status,
-                          onChanged: (value) {
-                            setState(() {
-                              status = value!;
-                            });
-                          },
-                          checkColor: Colors.white,
-                          activeColor: Color(0xFFC653CB),
-                        ),
-                        Text('أوافق على الأحكام والشروط.')
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: status2,
-                          onChanged: (value) {
-                            setState(() {
-                              status2 = value!;
-                            });
-                          },
-                          checkColor: Colors.white,
-                          activeColor: Color(0xFFC653CB),
-                        ),
-                        Text('أرغب بتلقي رسائل البريد الإلكتروني من التطبيق.')
-                      ],
+                    MyTextField(
+                      labelText: 'تاريخ الميلاد  DD/MM/YYYY',
+                      outLineBorderColor: Color(0xFFC653CB),
+                      textInputType: TextInputType.datetime,
+                      textEditingController: _birthDayController,
                     ),
                     SizedBox(
                       height: 100,
@@ -188,7 +137,7 @@ class _TeacherForm4State extends State<TeacherForm4> {
               child: Container(
                 child: IconButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/done_screen');
+                   Navigator.pushReplacementNamed(context, '/student_form_2');
                   },
                   icon: Icon(
                     Icons.arrow_forward_ios,

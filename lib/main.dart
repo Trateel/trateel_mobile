@@ -6,6 +6,11 @@ import 'package:trateel_mobile/screens/launch_screen.dart';
 import 'package:trateel_mobile/screens/login_screen.dart';
 import 'package:trateel_mobile/screens/onboarding_screen.dart';
 import 'package:trateel_mobile/screens/request_access_screen.dart';
+import 'package:trateel_mobile/screens/student%20screens/student_form_1.dart';
+import 'package:trateel_mobile/screens/student%20screens/student_form_2.dart';
+import 'package:trateel_mobile/screens/student%20screens/student_form_3.dart';
+import 'package:trateel_mobile/screens/student%20screens/student_form_4.dart';
+import 'package:trateel_mobile/screens/student%20screens/student_form_5.dart';
 import 'package:trateel_mobile/screens/teacher%20screens/teacher_form_1.dart';
 import 'package:trateel_mobile/screens/teacher%20screens/teacher_form_2.dart';
 import 'package:trateel_mobile/screens/teacher%20screens/teacher_form_3.dart';
@@ -31,6 +36,11 @@ class Trateel extends StatelessWidget {
         '/teacher_form_3': (context) => TeacherForm3(),
         '/teacher_form_4': (context) => TeacherForm4(),
         '/done_screen': (context) => DoneScreen(),
+        '/student_form_1': (context) => StudentForm1(),
+        '/student_form_2': (context) => StudentForm2(),
+        '/student_form_3': (context) => StudentForm3(),
+        '/student_form_4': (context) => StudentForm4(),
+        '/student_form_5': (context) => StudentForm5(),
       },
     );
   }

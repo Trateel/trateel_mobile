@@ -43,11 +43,14 @@ class _LaunchScreenState extends State<LaunchScreen> {
               Image(
                 image: AssetImage('assets/images/Logo.png'),
               ),
-              Image(
-                fit: BoxFit.cover,
-                width: double.infinity,
-                image: AssetImage(
-                  'assets/images/Graphics.png',
+              Padding(
+                padding: EdgeInsetsDirectional.only(top: 50),
+                child: Image(
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  image: AssetImage(
+                    'assets/images/Graphics.png',
+                  ),
                 ),
               ),
             ],

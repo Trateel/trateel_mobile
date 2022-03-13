@@ -61,6 +61,7 @@ class _DoneScreenState extends State<DoneScreen> {
               right: 82,
               child: MyElvatedButton(
                 toDo: (){
+                  Navigator.pushReplacementNamed(context, '/login_screen');
                 },
                 text: 'تسجيل الدخول',
                 textColor: Colors.white,

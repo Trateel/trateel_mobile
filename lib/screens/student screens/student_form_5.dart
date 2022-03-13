@@ -1,19 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:trateel_mobile/size_config.dart';
 import 'package:trateel_mobile/widget/my_text_field.dart';
 
-class TeacherForm4 extends StatefulWidget {
-  const TeacherForm4({Key? key}) : super(key: key);
+class StudentForm5 extends StatefulWidget {
+  const StudentForm5({Key? key}) : super(key: key);
 
   @override
-  _TeacherForm4State createState() => _TeacherForm4State();
+  _StudentForm5State createState() => _StudentForm5State();
 }
 
-class _TeacherForm4State extends State<TeacherForm4> {
+class _StudentForm5State extends State<StudentForm5> {
   late TextEditingController _emailController;
   late TextEditingController _userNameController;
   late TextEditingController _passwordController;
@@ -61,7 +59,7 @@ class _TeacherForm4State extends State<TeacherForm4> {
                           child: IconButton(
                             onPressed: () {
                               Navigator.pushReplacementNamed(
-                                  context, '/teacher_form_3');
+                                  context, '/student_form_4');
                             },
                             icon: Icon(
                               Icons.arrow_back_ios,
@@ -78,7 +76,7 @@ class _TeacherForm4State extends State<TeacherForm4> {
                       ),
                     ),
                     Text(
-                      'استمارة المحفظ',
+                      'استمارة الطالب',
                       style: TextStyle(
                         fontSize: 34,
                         fontWeight: FontWeight.w700,

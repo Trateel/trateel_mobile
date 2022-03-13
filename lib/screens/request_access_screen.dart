@@ -74,7 +74,9 @@ class _RequestAccessScreenState extends State<RequestAccessScreen> {
                   titel: 'محفظ',
                 ),
                 MyCardWidget(
-                  toDo: () {},
+                  toDo: () {
+                    Navigator.pushReplacementNamed(context, '/student_form_1');
+                  },
                   cardImage: 'assets/images/Student.png',
                   titel: 'طالب',
                 ),
