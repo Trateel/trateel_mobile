@@ -20,6 +20,7 @@ class MyTextField extends StatelessWidget {
     return Padding(
       padding: EdgeInsetsDirectional.only(start: 5, end: 5, top: 10),
       child: TextField(
+        controller: textEditingController,
         keyboardType: textInputType,
         decoration: InputDecoration(
           labelText: labelText,

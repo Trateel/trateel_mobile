@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:trateel_mobile/size_config.dart';
+import 'package:trateel_mobile/utils/alert.dart';
+import 'package:trateel_mobile/utils/helpers.dart';
 import 'package:trateel_mobile/widget/my_text_field.dart';
 
 class TeacherForm4 extends StatefulWidget {
@@ -13,7 +15,7 @@ class TeacherForm4 extends StatefulWidget {
   _TeacherForm4State createState() => _TeacherForm4State();
 }
 
-class _TeacherForm4State extends State<TeacherForm4> {
+class _TeacherForm4State extends State<TeacherForm4> with Helpers,Alert{
   late TextEditingController _emailController;
   late TextEditingController _userNameController;
   late TextEditingController _passwordController;
@@ -188,7 +190,11 @@ class _TeacherForm4State extends State<TeacherForm4> {
               child: Container(
                 child: IconButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/done_screen');
+                    performTest();
+                    if(checkData()){
+                      showAlert(context);
+                    }
+
                   },
                   icon: Icon(
                     Icons.arrow_forward_ios,
@@ -214,5 +220,23 @@ class _TeacherForm4State extends State<TeacherForm4> {
         ),
       ),
     );
+  }
+  Future performTest() async{
+    if(checkData()){
+      await test();
+    }
+  }
+  bool checkData(){
+    if(_emailController.text.isNotEmpty && _userNameController.text.isNotEmpty
+        &&_passwordController.text.isNotEmpty&&status==true) {
+      showSnackBar(context, message: 'الإنتقال الى المرحلة التالية.');
+      return true;
+    }
+    showSnackBar(context, message: 'يرجى إدخال البيانات بالكامل.', error: true);
+    return false;
+  }
+  Future test() async{
+    //TODO: Login - API Request
+    checkData();
   }
 }

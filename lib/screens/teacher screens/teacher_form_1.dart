@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trateel_mobile/size_config.dart';
+import 'package:trateel_mobile/utils/helpers.dart';
 import 'package:trateel_mobile/widget/my_text_field.dart';
 
 class TeacherForm1 extends StatefulWidget {
@@ -12,7 +13,7 @@ class TeacherForm1 extends StatefulWidget {
   _TeacherForm1State createState() => _TeacherForm1State();
 }
 
-class _TeacherForm1State extends State<TeacherForm1> {
+class _TeacherForm1State extends State<TeacherForm1> with Helpers{
   late TextEditingController _nameController;
   late TextEditingController _idController;
   late TextEditingController _mobileController;
@@ -137,7 +138,10 @@ class _TeacherForm1State extends State<TeacherForm1> {
               child: Container(
                 child: IconButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/teacher_form_2');
+                    performTest();
+                    if(checkData()){
+                      Navigator.pushReplacementNamed(context, '/teacher_form_2');
+                    }
                   },
                   icon: Icon(
                     Icons.arrow_forward_ios,
@@ -163,5 +167,23 @@ class _TeacherForm1State extends State<TeacherForm1> {
         ),
       ),
     );
+  }
+  Future performTest() async{
+    if(checkData()){
+      await test();
+    }
+  }
+  bool checkData(){
+    if(_nameController.text.isNotEmpty && _idController.text.isNotEmpty
+    &&_mobileController.text.isNotEmpty&&_birthDayController.text.isNotEmpty) {
+      showSnackBar(context, message: 'الإنتقال الى المرحلة التالية.');
+      return true;
+    }
+    showSnackBar(context, message: 'يرجى إدخال البيانات بالكامل.', error: true);
+    return false;
+  }
+  Future test() async{
+    //TODO: Login - API Request
+    checkData();
   }
 }

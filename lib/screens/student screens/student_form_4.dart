@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trateel_mobile/size_config.dart';
+import 'package:trateel_mobile/utils/helpers.dart';
 
 class StudentForm4 extends StatefulWidget {
   const StudentForm4({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class StudentForm4 extends StatefulWidget {
   _StudentForm4State createState() => _StudentForm4State();
 }
 
-class _StudentForm4State extends State<StudentForm4> {
+class _StudentForm4State extends State<StudentForm4> with Helpers{
   String name = 'محمد محجوب';
   bool status = false;
   @override
