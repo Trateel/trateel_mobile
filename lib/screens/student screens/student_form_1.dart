@@ -15,24 +15,24 @@ class StudentForm1 extends StatefulWidget {
 
 class _StudentForm1State extends State<StudentForm1> with Helpers {
   late TextEditingController _nameController;
-  late TextEditingController _idController;
-  late TextEditingController _mobileController;
+  late TextEditingController _classController;
+  late TextEditingController _addressController;
   late TextEditingController _birthDayController;
 
   @override
   void initState() {
     super.initState();
     _nameController = TextEditingController();
-    _idController = TextEditingController();
-    _mobileController = TextEditingController();
+    _classController = TextEditingController();
+    _addressController = TextEditingController();
     _birthDayController = TextEditingController();
   }
 
   @override
   void dispose() {
     _nameController.dispose();
-    _idController.dispose();
-    _mobileController.dispose();
+    _classController.dispose();
+    _addressController.dispose();
     _birthDayController.dispose();
     super.dispose();
   }
@@ -110,14 +110,14 @@ class _StudentForm1State extends State<StudentForm1> with Helpers {
                     MyTextField(
                       labelText: 'الصف والشعبة',
                       outLineBorderColor: Color(0xFFC653CB),
-                      textInputType: TextInputType.number,
-                      textEditingController: _idController,
+                      textInputType: TextInputType.text,
+                      textEditingController: _classController,
                     ),
                     MyTextField(
                       labelText: 'عنوان السكن',
                       outLineBorderColor: Color(0xFFC653CB),
-                      textInputType: TextInputType.number,
-                      textEditingController: _mobileController,
+                      textInputType: TextInputType.text,
+                      textEditingController: _addressController,
                     ),
                     MyTextField(
                       labelText: 'تاريخ الميلاد  DD/MM/YYYY',
@@ -178,8 +178,8 @@ class _StudentForm1State extends State<StudentForm1> with Helpers {
 
   bool checkData() {
     if (_nameController.text.isNotEmpty &&
-        _idController.text.isNotEmpty &&
-        _mobileController.text.isNotEmpty &&
+        _classController.text.isNotEmpty &&
+        _addressController.text.isNotEmpty &&
         _birthDayController.text.isNotEmpty) {
       showSnackBar(context, message: 'الإنتقال الى المرحلة التالية.');
       return true;

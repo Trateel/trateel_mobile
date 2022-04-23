@@ -165,7 +165,9 @@ class _LoginScreenState extends State<LoginScreen> with Helpers{
                       child: MyElvatedButton(
                         toDo: (){
                           performLogin();
-                          Navigator.pushReplacementNamed(context, '/main_screen');
+                          if(checkData()){
+                            Navigator.pushReplacementNamed(context, '/main_screen');
+                          }
                         },
                           text: 'تسجيل الدخول',
                           textColor: Colors.white,
