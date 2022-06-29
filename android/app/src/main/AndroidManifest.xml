@@ -2,7 +2,7 @@
     package="com.trateel.trateel_mobile">
    <application
         android:label="trateel_mobile"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

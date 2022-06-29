@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:trateel_mobile/size_config.dart';
-import 'package:trateel_mobile/utils/helpers.dart';
 import 'package:trateel_mobile/widget/my_text_field.dart';
 
 class TeacherForm3 extends StatefulWidget {
@@ -14,7 +13,7 @@ class TeacherForm3 extends StatefulWidget {
   _TeacherForm3State createState() => _TeacherForm3State();
 }
 
-class _TeacherForm3State extends State<TeacherForm3> with Helpers{
+class _TeacherForm3State extends State<TeacherForm3> {
   late TextEditingController _socialStatusController;
   late TextEditingController _numberOfSonsController;
   late TextEditingController _healthStatusController;
@@ -137,10 +136,7 @@ class _TeacherForm3State extends State<TeacherForm3> with Helpers{
               child: Container(
                 child: IconButton(
                   onPressed: () {
-                    performTest();
-                    if(checkData()){
-                      Navigator.pushReplacementNamed(context, '/teacher_form_4');
-                    }
+                    Navigator.pushReplacementNamed(context, '/teacher_form_4');
                   },
                   icon: Icon(
                     Icons.arrow_forward_ios,
@@ -166,23 +162,5 @@ class _TeacherForm3State extends State<TeacherForm3> with Helpers{
         ),
       ),
     );
-  }
-  Future performTest() async{
-    if(checkData()){
-      await test();
-    }
-  }
-  bool checkData(){
-    if(_socialStatusController.text.isNotEmpty && _numberOfSonsController.text.isNotEmpty
-        &&_healthStatusController.text.isNotEmpty&&_livingStatusController.text.isNotEmpty) {
-      showSnackBar(context, message: 'الإنتقال الى المرحلة التالية.');
-      return true;
-    }
-    showSnackBar(context, message: 'يرجى إدخال البيانات بالكامل.', error: true);
-    return false;
-  }
-  Future test() async{
-    //TODO: Login - API Request
-    checkData();
   }
 }

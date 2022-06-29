@@ -3,7 +3,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trateel_mobile/size_config.dart';
-import 'package:trateel_mobile/utils/helpers.dart';
 import 'package:trateel_mobile/widget/my_text_field.dart';
 
 class StudentForm1 extends StatefulWidget {
@@ -13,26 +12,26 @@ class StudentForm1 extends StatefulWidget {
   _StudentForm1State createState() => _StudentForm1State();
 }
 
-class _StudentForm1State extends State<StudentForm1> with Helpers {
+class _StudentForm1State extends State<StudentForm1> {
   late TextEditingController _nameController;
-  late TextEditingController _classController;
-  late TextEditingController _addressController;
+  late TextEditingController _idController;
+  late TextEditingController _mobileController;
   late TextEditingController _birthDayController;
 
   @override
   void initState() {
     super.initState();
     _nameController = TextEditingController();
-    _classController = TextEditingController();
-    _addressController = TextEditingController();
+    _idController = TextEditingController();
+    _mobileController = TextEditingController();
     _birthDayController = TextEditingController();
   }
 
   @override
   void dispose() {
     _nameController.dispose();
-    _classController.dispose();
-    _addressController.dispose();
+    _idController.dispose();
+    _mobileController.dispose();
     _birthDayController.dispose();
     super.dispose();
   }
@@ -110,14 +109,14 @@ class _StudentForm1State extends State<StudentForm1> with Helpers {
                     MyTextField(
                       labelText: 'الصف والشعبة',
                       outLineBorderColor: Color(0xFFC653CB),
-                      textInputType: TextInputType.text,
-                      textEditingController: _classController,
+                      textInputType: TextInputType.number,
+                      textEditingController: _idController,
                     ),
                     MyTextField(
                       labelText: 'عنوان السكن',
                       outLineBorderColor: Color(0xFFC653CB),
-                      textInputType: TextInputType.text,
-                      textEditingController: _addressController,
+                      textInputType: TextInputType.number,
+                      textEditingController: _mobileController,
                     ),
                     MyTextField(
                       labelText: 'تاريخ الميلاد  DD/MM/YYYY',
@@ -138,11 +137,7 @@ class _StudentForm1State extends State<StudentForm1> with Helpers {
               child: Container(
                 child: IconButton(
                   onPressed: () {
-                    performTest();
-                    if (checkData()) {
-                      Navigator.pushReplacementNamed(
-                          context, '/student_form_2');
-                    }
+                   Navigator.pushReplacementNamed(context, '/student_form_2');
                   },
                   icon: Icon(
                     Icons.arrow_forward_ios,
@@ -168,28 +163,5 @@ class _StudentForm1State extends State<StudentForm1> with Helpers {
         ),
       ),
     );
-  }
-
-  Future performTest() async {
-    if (checkData()) {
-      await test();
-    }
-  }
-
-  bool checkData() {
-    if (_nameController.text.isNotEmpty &&
-        _classController.text.isNotEmpty &&
-        _addressController.text.isNotEmpty &&
-        _birthDayController.text.isNotEmpty) {
-      showSnackBar(context, message: 'الإنتقال الى المرحلة التالية.');
-      return true;
-    }
-    showSnackBar(context, message: 'يرجى إدخال البيانات بالكامل.', error: true);
-    return false;
-  }
-
-  Future test() async {
-    //TODO: Login - API Request
-    checkData();
   }
 }

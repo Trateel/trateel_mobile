@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:trateel_mobile/size_config.dart';
-import 'package:trateel_mobile/utils/alert.dart';
-import 'package:trateel_mobile/utils/helpers.dart';
 import 'package:trateel_mobile/widget/my_text_field.dart';
 
 class StudentForm5 extends StatefulWidget {
@@ -13,7 +11,7 @@ class StudentForm5 extends StatefulWidget {
   _StudentForm5State createState() => _StudentForm5State();
 }
 
-class _StudentForm5State extends State<StudentForm5> with Helpers,Alert{
+class _StudentForm5State extends State<StudentForm5> {
   late TextEditingController _emailController;
   late TextEditingController _userNameController;
   late TextEditingController _passwordController;
@@ -188,10 +186,7 @@ class _StudentForm5State extends State<StudentForm5> with Helpers,Alert{
               child: Container(
                 child: IconButton(
                   onPressed: () {
-                    performTest();
-                    if(checkData()){
-                      showAlert(context);
-                    }
+                    Navigator.pushReplacementNamed(context, '/done_screen');
                   },
                   icon: Icon(
                     Icons.arrow_forward_ios,
@@ -217,23 +212,5 @@ class _StudentForm5State extends State<StudentForm5> with Helpers,Alert{
         ),
       ),
     );
-  }
-  Future performTest() async{
-    if(checkData()){
-      await test();
-    }
-  }
-  bool checkData(){
-    if(_emailController.text.isNotEmpty && _userNameController.text.isNotEmpty
-        &&_passwordController.text.isNotEmpty&&status==true) {
-      showSnackBar(context, message: 'الإنتقال الى المرحلة التالية.');
-      return true;
-    }
-    showSnackBar(context, message: 'يرجى إدخال البيانات بالكامل.', error: true);
-    return false;
-  }
-  Future test() async{
-    //TODO: Login - API Request
-    checkData();
   }
 }
